@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import path from 'path';
 
 // https://astro.build/config
 export default defineConfig({
@@ -8,9 +9,14 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "src/scss/variables.scss";`
+          additionalData: `@import "@scss/variables.scss";`
         }
       }
-    }
+    },
+    resolve: {
+      alias: {
+        '@scss': path.resolve('./src/scss'),
+      },
+    },
   }
 });
